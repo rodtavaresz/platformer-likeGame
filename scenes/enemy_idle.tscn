@@ -1,0 +1,113 @@
+[gd_scene load_steps=16 format=3 uid="uid://bbp6dp2xwalp5"]
+
+[ext_resource type="Script" uid="uid://b4q7v5tjp5vxo" path="res://scenes/enemy_idle.gd" id="1_di6l2"]
+[ext_resource type="Texture2D" uid="uid://dssfdk6enqqok" path="res://assets/Main Characters/Pink Man/Idle (32x32).png" id="1_dw5ep"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xc2jc"]
+atlas = ExtResource("1_dw5ep")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_di6l2"]
+atlas = ExtResource("1_dw5ep")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6eq1"]
+atlas = ExtResource("1_dw5ep")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aahqu"]
+atlas = ExtResource("1_dw5ep")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtlds"]
+atlas = ExtResource("1_dw5ep")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ofp7"]
+atlas = ExtResource("1_dw5ep")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iy3c3"]
+atlas = ExtResource("1_dw5ep")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_evtny"]
+atlas = ExtResource("1_dw5ep")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8x8c"]
+atlas = ExtResource("1_dw5ep")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8leyk"]
+atlas = ExtResource("1_dw5ep")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_40eej"]
+atlas = ExtResource("1_dw5ep")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ypllk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xc2jc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_di6l2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f6eq1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aahqu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gtlds")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ofp7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iy3c3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_evtny")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8x8c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8leyk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_40eej")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 16.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r2o76"]
+size = Vector2(20, 26)
+
+[node name="EnemyIdle" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 4
+script = ExtResource("1_di6l2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ypllk")
+animation = &"idle"
+autoplay = "idle"
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_r2o76")
+
+[node name="WallCheck" type="RayCast2D" parent="."]
+target_position = Vector2(12, 0)
+
+[node name="LedgeCheck" type="RayCast2D" parent="."]
+position = Vector2(8, 0)
+target_position = Vector2(0, 16)
